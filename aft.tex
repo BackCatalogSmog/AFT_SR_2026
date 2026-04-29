@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{biblio.bib}
+
+
+\begin{document}
+	%\faculty{Fakultät Informatik}
+	%\institute{Institut für Software- und Multimediatechnik}
+	%\chair{Lehrstuhl für Softwaretechnologie}
+	%\date{09.09.2025}
+	%\subject{Minor Thesis}
+	\author{%
+		Ulrich Christian Huber%
+%		\matriculationnumber{3957338}%
+%		\dateofbirth{30.08.1994}%
+%		\placeofbirth{Pegnitz}%
+	}
+%	\matriculationyear{2013}
+%	\supervisor{Dr. Sebastian Götz}
+%	\professor{Prof. Dr. rer. nat. Uwe Aßmann}
+	
+\title{Working Title: An Overview of Current Trends in Swarm Robotics}
+\pagenumbering{arabic}
+
+%	\TUDoption{abstract}{true,toc,chapter}
+\maketitle
+	
+	
+\begin{abstract}
+As decentralisation is asserting itself over monolithic design in wide-scale applications of robotics with ever smaller, yet more computationally powerful units, coordinating such robotic swarms effectively still poses a considerable challenge. Drawing from recent research, this paper aims to give an overview over the field of swarm robotics in general and the considerations of designing such systems in particular.
+\end{abstract}
+\section{Introduction}
+\begin{itemize}
+	\item \textbf{RQ1:} \textit{Which trends and approaches in the field of swarm robotics are currently being investigated?}
+	\item \textbf{RQ2:} \textit{Which gaps are present?}
+	\item \textbf{RQ2:} \textit{Has swarm robotics evolved beyond simple organisation towards complex behaviours?}
+\end{itemize}
+In order to answer these questions in a way that outlines the current research landscape, papers from 2018 and onwards have been prioritised.
+
+\section{Swarm Types}
+
+\section{Swarm Coordination and Task Allocation}
+\subsection{Competitive Methods}
+CSO \cite{decadeCSO} %TODO bib might be faulty? But page 101543 is set by sciencedirects own cite export tool. Weird.
+
+\subsection{Cooperative Methods}
+-Particle Swarm, Ant Colony \cite{PSOandACO}, ABC, AFS \cite{SwarmIntelligenceOptimisation}
+
+\section{Computer Assisted Swarm Design Methodologies}
+In general, evolutionary design can be classified along two axes: Automatic approaches, in which an optimisation process generates control software without human input beyond the initial formalisation of the underlying model, differ from semi automatic approaches, where humans remain in the loop and guide the optimisation process \cite{recentTrends}. \newline
+The other axis concerns itself with deployment. Offline methods generate control software before deployment, while online methods target an already ongoing robot configuration that is activated.
+
+\subsection{Automatic Design - AutoMoDe}
+In 2014, Francesca et al. investigated methods for automatic swarm robot control software generation that could close the reality gap (TODO RG def), i. e. the difference between simulated performance and physical, real world deployment. Using a combination of probabilistic finite state machines (PFSM) and evolutionary F-Race optimisation, their approach proved to fulfill this goal remarkably well, especially compared to other evolutionary approaches as outlined in an empirical study conducted by Hasselmann et al. \cite{amEmpirical}. AutoMoDe variations are often being referred to as flavours partly due to its original naming convention of "Vanilla" and "Chocolate", with several descendant variants employing similar nomenclature. Table TODO gives an overview of select variants featuring iterations on the original concept.
+%TODO: Reference, cite every variant in table
+%TODO: Put Automode in context
+%TODO: Automode Details
+
+%TODO: Make its own page, horizontal
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{|l|l|l|l|l|l|l|l|}
+		\hline
+		Year & AutoMoDe Flavour & Target Robot Platform & Control Model Type & Communications Model & Optimisation Algorithm & Simulator/Environment & Notes \\ \hline
+		2014 & Vanilla & E-puck & PFSM & None & F-Race & ARGoS 3 & Original AutoMoDe \\ \hline
+		2015 & Chocolate & E-puck & PFSM & None & Iterated F-Race & ARGoS 3 & Successor to Vanilla, features different optimisation algorithm \\ \hline
+		2018 & Maple & E-puck & Behaviour Trees & None & Iterated F-Race & ARGoS 3 b48 & ~ \\ \hline
+		2018 & Gianduja & E-puck & PFSM & Signifier Broadcast 1bit & Iterated F-Race & ARGoS 3 & Communication capabilities \\ \hline
+		2019 & Waffle & E-puck & PFSM & Infrared Transceivers & Iterated F-Race & ARGoS 3 & Generation does not require hardware specifications \\ \hline
+		2019 & Icepop & E-puck & PFSM & None & Simulated Annealing & ARGoS 3 & ~ \\ \hline
+		2020 & Gianduja2/Gianduja3 & E-puck & PFSM & Signifier Broadcast 2bit/3bit & Iterated F-Race & ARGoS 3 & Communication capabilities \\ \hline
+		2020 & TuttiFrutti & E-puck & PFSM & Colour Detection/Emission turret & Iterated F-Race & ARGoS 3 b48 & MDPI \\ \hline
+		2020 & Arlequin & E-puck & PFSM & None & Iterated F-Race & ARGoS 3 & Behaviour Modules were auto-generated \\ \hline
+		2021 & Cedrata & E-puck & Behaviour Trees & Range-and-bearing & Iterated F-Race & ARGoS 3 & ~ \\ \hline
+		2022 & Cedrata-GP/Cedrata-GE & E-puck & Behaviour Trees & Range-and-bearing & Genetic Programming, Grammatical Evolution & ARGoS 3 & ~ \\ \hline
+		2023 & Nata & E-puck & PFSM & None & Iterated F-Race & ARGoS 3 b48 & Successor to Arlequin, Condition Modules were also automatically generated \\ \hline
+		2024 & Habanero & E-puck & PFSM & Artificial pheromones as colour trail & Iterated F-Race & ARGoS 3 & ~ \\ \hline
+	\end{tabular}
+\end{table}
+
+It is of particular note that so far, only E-Puck has been used as a platform, ports to other robots could not be found, leaving open the challenge of a platform-agnostic implementation. However, this should be
+
+\subsection{Semiautomatic Design - Human in the loop}
+In contrast to fully automatic design methods for general use purposes, more complex and specific use cases can benefit from manual guidance in the process of generating control software. \cite{semiautomatic}
+
+\section{Application Domains and their challenges}
+As robots are deployed in diverse environments, they face domain-specific problems that impose restrictions on their use and require task- and environment-specific considerations before deployment.
+\subsection{Unmanned Aerial Vehicles}
+%TODO: Clarify
+Operating under 6 Degrees of freedom (DOF) as they are not constrained by terrestrial movement, swarms of robotic unmanned aerial vehicles (UAV) face additional challenges, especially in terms of orchestrating movement. A recent review by Alqudsi et al. \cite{alqudsi2025exploring} mentions aerial collisions as a particular challenge for robots moving in formation in a shared environment, requiring orchestration of movement in centralised or decoupled planning modes. Centralised planning represents a group of robots as one unit, whereby the DOF of individual agents are considered together and the configuration space must be searched for valid path combinations. This, however, comes at the cost of linear complexity, limiting scope. \newline
+Decoupled planning, on the other hand, features a planner generating routs for each agent by itself, resulting in a collision-free path for every robot. Speed is then adjusted per unit to facilitate. The lower dimensional search space enables a more scalable solution.
+Further challenges arise in the form of vulnerabilities in terms of secure communications and hostile actions. Due to signal requirements for coordination, they are susceptible to jamming, spoofing and eavesdropping. Secure channels and countermeasures to interference are considerations when designing such systems. \newline
+Another review of aerial swarm robotics can be found in \cite{abdelkader2021aerial} 
+\subsection{Underwater Swarm Robotics}
+\cite{underwaterSR}
+
+\newpage
+\printbibliography
+
+
+
+	
+	
+
+\end{document}
