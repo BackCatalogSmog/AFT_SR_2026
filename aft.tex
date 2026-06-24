@@ -19,7 +19,7 @@
 %	\supervisor{Dr. Sebastian Götz}
 %	\professor{Prof. Dr. rer. nat. Uwe Aßmann}
 	
-\title{Working Title: An Overview of Current Trends in Swarm Robotics}
+\title{An Overview of Current Trends in Swarm Robotics}
 \pagenumbering{arabic}
 
 %	\TUDoption{abstract}{true,toc,chapter}
@@ -39,7 +39,7 @@ With the advent of ever more powerful, yet smaller devices, computation in a dis
 	\item \textbf{RQ3:} \textit{Has swarm robotics evolved beyond simple organisation towards complex behaviours?}
 \end{itemize}
 
-In order to answer these questions in a way that outlines the current research landscape, papers from 2018 and onwards have been prioritised and collected through search engines such as Google Scholar.
+In order to answer these questions in a way that outlines the current research landscape, papers from 2018 and onwards have been prioritised and collected through search engines (Google Scholar, DBPL), though review papers referenced include older publications.
 
 \section{Robot Swarms}
 In a 2019 paper \cite{arnold2019swarmRoboticsGeneralDef}, Arnold et al. attempted to provide a general definition of swarm robotics to build upon. Generally, swarms are defined by several key characteristics: A collective, not necessarily homogenous grouping of robots composed of multiple individual units, robot swarms operate with only limited human intervention towards achieving a common goal or task. Human input is often limited to setting the goal rather than control over Communication can be explicit via dedicated communications channels or implicit via environmental information of manipulation and tasks are achieved through emergent behaviour.
@@ -52,12 +52,22 @@ Decision making behaviours require communication capabilities, whether explicit 
 Further general task types can be found in self-healing (recovering from faults), self-reproduction (creation of additional units) and human-swarm interaction.
 
 
-\section{Swarm Coordination and Task Allocation}
+\section{Swarm Coordination}
+One of the primary drivers behind robotic swarm technology lies in lowering human intervention by implementing a higher degree of autonomy within individual units. Central to this task is the ability to self-organise what each robot should be doing at any given point in time. To this end, different approaches can be identified in literature, as outlined in this section. %TODO citation needed?
 \subsection{Competitive Methods}
-CSO \cite{decadeCSO} %TODO bib might be faulty? But page 101543 is set by sciencedirects own cite export tool. Weird.
+Inspired by particle swarm optimisation but incorporating a pairwise competition mechanism, competitive swarm optimisation (CSO) \cite{CSODef} provides a linear time solution to optimisation problems in the realm of high-dimensional task allocation. 
+In \cite{decadeCSO}, Chauhan et al. investigate a ten year span of CSO research  %TODO bib might be faulty? But page 101543 is set by sciencedirects own cite export tool. Weird.
 
 \subsection{Cooperative Methods}
--Particle Swarm, Ant Colony \cite{PSOandACO}, ABC, AFS \cite{SwarmIntelligenceOptimisation}
+\textbf{\textit{Particle Swarm Optimisation}} \newline
+Inspired by bird-like flocking behaviour, particle swarm optimisation (PSO) \cite{PSODef} is a metaheuristic approach that moves candidate solutions as particles in a search space to improve a given quality metric. In the realm of swarm robotics, PSO has enjoyed increasing interest, especially regarding the target search problem, as identified by Hamami and Ismail \cite{PSORoboticsHamami}. They noted a significant up-tick of publications in research interest of PSO in swarm robotics compared to other fields, noting a frequent approach of mapping individual swarm members onto particles. Adaptations of PSO have found their way into land, air and sea based swarm robot control mechanisms and path planning. However, open challenges are still present in sweet spot balance (diversification vs intensification), lack of unified mathematical model structure for analysing PSO performance metrics and lack of testing environments that closely mimic real world constraints.
+\newline
+\textbf{\textit{Ant Colony Optimisation}}\newline
+\textbf{\textit{Bacterial Foraging Optimisation}}\newline
+\textbf{\textit{Artificial Bee Colony}}\newline
+\textbf{\textit{Artifical Fish Swarm}}\newline
+
+\cite{PSOandACO} \cite{SwarmIntelligenceOptimisation}
 
 \section{Computer Assisted Swarm Design Methodologies}
 In general, evolutionary design can be classified along two axes: Automatic approaches, in which an optimisation process generates control software without human input beyond the initial formalisation of the underlying model, differ from semi automatic approaches, where humans remain in the loop and guide the optimisation process \cite{recentTrends}. \newline
@@ -106,7 +116,7 @@ Operating under 6 Degrees of freedom (DOF) as they are not constrained by terres
 Decoupled planning, on the other hand, features a planner generating routes for each agent by itself, resulting in a collision-free path for every robot. Speed is then adjusted per unit. The lower dimensional search space enables a more scalable solution.
 Further challenges arise in the form of vulnerabilities in terms of secure communications and hostile actions. Due to signal requirements for coordination, they are susceptible to jamming, spoofing and eavesdropping. Secure channels and countermeasures to interference are considerations when designing such systems. \newline
 Another review of aerial swarm robotics can be found in \cite{abdelkader2021aerial}
-\subsection{Swarm Intelligence in Agriculture}
+\subsection{Swarm Intelligence and Robotics in Agriculture}
 In the sector of agriculture, \cite{Sharma2022SwarmIntelligenceAgriculture} conducted a review of relevant literature have identified several developments concerning swarm intelligence - quite literally - in the field. While the study is mostly focused on, a section on swarm intelligence and swarm robotics singles out particular \cite{botteghi2020agriPath} in particular for its use of ground and aerial UAVs traversing agricultural topology and the challenges associated with it. \newline %include 2016 sugar cane harvesting case study?
 Further research indication is given in the direction of autonomous path navigation and particular attention to the remote nature of farming posing practical challenges regarding connection as well as security challenges concerning unauthorised access to the robots, digitally and physically.
 Another review by Albiero et al. \cite{albiero2022swarmAgri} indicates a lack of scientific interest for agriculture as a focus area and a low technological readiness level for swarm robotics with less than a fourth of surveyed studies showing prototypes being put to use in operational environments, implying significant potential for impactful research. Conditions harsh towards delicate robotic parts, hostile to wireless communications, unstructured environments with crops as soft, easily damaged and malleable targets are identified as challenges particular to mechanised agriculture, requiring improvements in hardware, complex collective emergent behaviours to compensate. They also recommend further investigation of swarm strategies tackling complex topologies of farmland contour, shape and crop configurations. /newline
@@ -117,6 +127,9 @@ The general consensus seems to be that agriculture as a whole is underserved in 
 
 \subsection{Underwater Swarm Robotics}
 \cite{underwaterSR}
+
+\section{Conclusion}
+Swarm robotics as a field is evolving rapidly, yet industrial application and. While centralised approaches featuring swarm intelligence components do appear, the core idea of distributed, autonomous swarm behaviours have yet to find widespread adoption \cite{SwarmIntelligenceOptimisation}.
 
 \newpage
 \printbibliography
